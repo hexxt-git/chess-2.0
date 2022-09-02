@@ -31,7 +31,7 @@ header .h2{
     font-size: 55px;
     text-decoration: underline solid darkcyan 3px;
 }
-.h1:visited, .h2:any-link{
+.h1:any-link, .h2:any-link{
     color: var(--text);
 }
 main{

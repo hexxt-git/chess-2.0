@@ -34,7 +34,7 @@ header .h2{
     font-size: 35px;
     text-decoration: underline solid darkcyan 3px;
 }
-.h1:visited, .h2:any-link{
+.h1:any-link, .h2:any-link{
     color: var(--text);
 }
 form{
@@ -89,7 +89,7 @@ form{
     -o-border-radius: 5px;
     font-variant: small-caps;
     display: grid;
-    grid-template-rows: 1fr 30px;
+    grid-template-rows: 1fr 35px;
 }
 .name-color{
     padding-left: 15px;
@@ -121,7 +121,7 @@ form{
     height: 50px;
 }
 .disable{
-    background-color: #e43;
+    background-color: #494;
     font-size: 30px;
     text-align: center;
     display: flex;
@@ -130,7 +130,7 @@ form{
     cursor: pointer;
 }
 .enable{
-    background-color: #4b4;
+    background-color: #e43;
     font-size: 30px;
     text-align: center;
     display: flex;
@@ -187,27 +187,27 @@ form{
 #win-condition option{
     background-color: #111;
 }
-#win-condition option:{
-    background-color: #111;
-}
-#submit{
+#next{
     background-color: #0b0b0b;
     border: none;
     display: block;
     margin: auto;
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 45px;
     font-family: Roboto;
+    font-variant: small-caps;
     color: var(--text);
     width: calc(100% - 30px);
     height: 60px;
+    padding-bottom: 61px;
     border: solid darkcyan 2px;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
+    cursor: pointer;
 }
-#submit:hover{
+#next:hover{
     background-color: #171717;
 }
