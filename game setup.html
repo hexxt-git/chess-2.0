@@ -84,10 +84,18 @@
                                 plays_per_turn: <input required type="number" id="plays-per-turn" placeholder="moves every turn">
                             </div>
                             <div class="setting">
-                                win_condition: <select id="win-condition">
+                                win_condition: <select id="win-condition" class="drop-down">
                                     <option value="king">King</option>
                                     <option value="time">Time</option>
                                     <option value="peices">All peices</option>
+                                </select>
+                            </div>
+                            <div class="setting">
+                                board: <select id="board" class="drop-down">
+                                    <option value="king">8x8</option>
+                                    <option value="king">10x10</option>
+                                    <option value="king">14x14</option>
+                                    <option value="king">20x20</option>
                                 </select>
                             </div>
                         </div>

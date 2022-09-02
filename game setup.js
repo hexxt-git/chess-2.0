@@ -5,6 +5,7 @@ if(olderSettings != null){
     $('max-turns').value = olderSettings.max_turns
     $('plays-per-turn').value = olderSettings.plays_per_turn
     $('win-condition').options.selectedIndex = olderSettings.win_condition
+    $('board').options.selectedIndex = olderSettings.board
     $('undos').value = olderSettings.undos
     $('skips').value = olderSettings.skip
 }
@@ -35,6 +36,7 @@ function update(){
             max_turns: $('max-turns').value,
             plays_per_turn: $('plays-per-turn').value,
             win_condition: $('win-condition').options.selectedIndex,
+            board: $('board').options.selectedIndex,
             undos: $('undos').value,
             skip: $('skips').value,
         }

@@ -46,11 +46,11 @@ function getCircle(x, y, r){
     }
     return circle
 };
-function peiceAt(board, x, y){
-    for(peice in board){
-        if(peice.x == x & peice.y == y){
-            return peice
+function pieceAt(board, x, y){
+    for(p in board){
+        if(board[p].x == x & board[p].y == y){
+            return board[p]
         }
     }
     return null
-}
+};

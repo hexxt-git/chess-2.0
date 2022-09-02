@@ -65,7 +65,7 @@ form{
     font-size: 35px;
     text-align: center;
     border-bottom: solid var(--accent) 2px;
-    letter-spacing: 2px;
+    letter-spacing: 5px;
     text-decoration: underline solid var(--accent) 3px;
     text-underline-offset: 4px;
     background-color: var(--dark);
@@ -175,7 +175,7 @@ form{
 #right{
     border-left: solid 2px var(--accent);
 }
-#win-condition{
+.drop-down{
     font-family: Roboto;
     margin-top: 2px;
     font-size: 23px;
@@ -187,10 +187,10 @@ form{
     border: none;
     border-bottom: solid 2px var(--accent);
 }
-#win-condition:focus{
+.drop-down:focus{
     outline: none;
 }
-#win-condition option{
+.drop-down option{
     background-color: var(--surfaces);
 }
 #next{
