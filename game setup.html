@@ -4,71 +4,105 @@
 		<meta charset="utf-8">
         <link rel="stylesheet" href="./game setup.css">
         <link rel="icon" type="image/x-icon" href="./icons/favicon.png" />
-        <title>CHESS 2.0-setup</title>
+        <title>CHESS 2.0 - setup</title>
         <script defer src="game setup.js"></script>
     </head>
     <body>
         <header>
-            <h1>CHESS 2.0</h1>
-            <h2>updated</h2>
+            <a class="h1" href="./index.html">CHESS 2.0</a>
+            <a class="h2" href="./index.html">updated</a>
         </header>
-        <main>
+        <form>
             <div>
                 <div id="players" class="column">
-                    <h3 class="title">players</h3>
+                    <h3 class="title">PLAYERS</h3>
                     <div id="player-cards">
                         <div class="player-card">
                             <div class="name-color">
-                                <div clas="name">
-                                    name:
+                                <div class="name">
+                                    name: <input required type="text" id="name1">
                                 </div>
                                 <div class="color">
-                                    color:                                    
+                                    color:<br>
+                                    <input required type="color" id="color1" value="#ff2222">                            
                                 </div>
                             </div>
-                            <div class="delete">delete</div>
+                            <div class="disable">disable</div>
                         </div>
                         <div class="player-card">
                             <div class="name-color">
-                                <div clas="name">
-                                    name:
+                                <div class="name">
+                                    name: <input required type="text" id="name2">
                                 </div>
                                 <div class="color">
-                                    color:                                    
+                                    color:<br>
+                                    <input required type="color" id="color2" value="#2222ff">                          
                                 </div>
                             </div>
-                            <div class="delete">delete</div>
+                            <div class="disable">disable</div>
                         </div>
                         <div class="player-card">
                             <div class="name-color">
-                                <div clas="name">
-                                    name:
+                                <div class="name">
+                                    name: <input required type="text" id="name3">
                                 </div>
                                 <div class="color">
-                                    color:                                    
+                                    color:<br>
+                                    <input required type="color" id="color3" value="#22aa22">                                
                                 </div>
                             </div>
-                            <div class="delete">delete</div>
+                            <div class="disable">disable</div>
                         </div>
                         <div class="player-card">
                             <div class="name-color">
-                                <div clas="name">
-                                    name:
+                                <div class="name">
+                                    name: <input required type="text" id="name4">
                                 </div>
                                 <div class="color">
-                                    color:                                    
+                                    color:<br>
+                                    <input required type="color" id="color4" value="#eeaa33">
                                 </div>
                             </div>
-                            <div class="delete">delete</div>
+                            <div class="enable">enable</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
                 <div id="game" class="column">
-                    <h3 class="title">game</h3>
+                    <h3 class="title">GAME</h3>
+                    <div id="game-settings">
+                        <div>
+                            <div class="setting">
+                                max_time:<input required type="text" id="max-time" placeholder="time limit in seconds">
+                            </div>
+                            <div class="setting">
+                                max_turns: <input required type="text" id="max-turns" placeholder="turn limit">
+                            </div>
+                            <div class="setting">
+                                plays_per_turn: <input required type="text" id="plays-per-turn" placeholder="moves every turn">
+                            </div>
+                            <div class="setting">
+                                win_condition: <select id="win-condition">
+                                    <option value="king">King</option>
+                                    <option value="time">Time</option>
+                                    <option value="peices">All peices</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="right">
+                            <div class="setting">
+                                undos: <input required type="text">
+                            </div>
+                            <div class="setting">
+                                skips: <input required type="text">
+                            </div>
+                            <input type="submit" value="submit" id="submit">
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
-        </main>
+        </form>
     </body>
 </html>

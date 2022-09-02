@@ -1,37 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
 *{
     --text: #EEE;
 }
+
 body{
     background-color: #171717;
     color: var(--text);
-    font-family: monospace;
-    font-weight: bold;
+    font-family: Roboto;
     height: 100vh;
     margin: 0px;
     display: grid;
     grid-template-rows: 1fr 4fr;
+    user-select: none;
+    overflow: hidden;
 }
 header{
-    user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-header h1, header h2{
+header .h1, header .h2{
     margin: 0px;
 }
-header h1{
+header .h1{
     font-size: 60px;
     text-decoration: underline solid darkcyan 4px;
     text-underline-offset: 5px;
     text-align: center;
 }
-header h2{
+header .h2{
     font-size: 35px;
     text-decoration: underline solid darkcyan 3px;
 }
-main{
+.h1:visited, .h2:any-link{
+    color: var(--text);
+}
+form{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -53,8 +59,17 @@ main{
     font-size: 35px;
     text-align: center;
     border-bottom: solid darkcyan 2px;
-    user-select: none;
+    letter-spacing: 2px;
+    text-decoration: underline solid darkcyan 3px;
+    text-underline-offset: 4px;
+    background-color: #0b0b0b;
+    border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    -moz-border-radius: 8px 8px 0px 0px;
+    -ms-border-radius: 8px 8px 0px 0px;
+    -o-border-radius: 8px 8px 0px 0px;
 }
+/*        cards         */
 #player-cards{
     height: calc(100% - 63px);
     width: 100%;
@@ -63,9 +78,8 @@ main{
     grid-template-rows: 1fr 1fr;
 }
 .player-card{
-    user-select: none;
     margin: 20px;
-    font-size: 35px;
+    font-size: 25px;
     background-color: #171717;
     border: darkcyan solid 2px;
     border-radius: 5px;
@@ -79,12 +93,121 @@ main{
 }
 .name-color{
     padding-left: 15px;
+    padding-right: 15px;
 }
-.delete{
-    background-color: red;
+.name {
+    display: flex;
+}
+.name input{
+    padding-left: 4px;
+    margin-top: 4px;
+    height: 24px;
+    font-size: 22px;
+    font-family: Roboto;
+    color: var(--text);
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px darkcyan;
+    color: var(--text);
+    width: 100%;
+}
+.name input:focus{
+    outline: none;
+}
+.color input{
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 50px;
+}
+.disable{
+    background-color: #e43;
     font-size: 30px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+.enable{
+    background-color: #4b4;
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+/*        GAME         */
+#game-settings{
+    height: calc(100% - 63px);
+    display: flex;
+}
+.setting{
+    margin-top: 10px;
+    padding-left: 8px;
+    padding-right: 15px;
+    font-size: 25px;
+    display: flex;
+    font-variant: small-caps;
+}
+.setting input{
+    font-family: Roboto;
+    padding-left: 4px;
+    margin-top: 4px;
+    height: 24px;
+    font-size: 23px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px darkcyan;
+    color: var(--text);
+    width: 100%;
+}
+.setting input:focus{
+    outline: none;
+}
+#right{
+    border-left: solid 2px darkcyan;
+}
+#win-condition{
+    font-family: Roboto;
+    margin-top: 2px;
+    font-size: 23px;
+    margin-left: 5px;
+    color: var(--text);
+    padding-left: 2px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px darkcyan;
+}
+#win-condition:focus{
+    outline: none;
+}
+#win-condition option{
+    background-color: #111;
+}
+#win-condition option:{
+    background-color: #111;
+}
+#submit{
+    background-color: #0b0b0b;
+    border: none;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: Roboto;
+    color: var(--text);
+    width: calc(100% - 30px);
+    height: 60px;
+    border: solid darkcyan 2px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+#submit:hover{
+    background-color: #171717;
 }
