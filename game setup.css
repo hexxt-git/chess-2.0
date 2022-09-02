@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
 *{
+    --background: #181818;
     --text: #EEE;
+    --accent: darkcyan;
+    --dark: #0b0b0b;
+    --surfaces: #111;
 }
 
 body{
-    background-color: #171717;
+    background-color: var(--background);
     color: var(--text);
     font-family: Roboto;
     height: 100vh;
@@ -26,13 +30,15 @@ header .h1, header .h2{
 }
 header .h1{
     font-size: 60px;
-    text-decoration: underline solid darkcyan 4px;
+    text-decoration: underline solid var(--accent) 4px;
     text-underline-offset: 5px;
     text-align: center;
+    letter-spacing: 7px;
 }
 header .h2{
     font-size: 35px;
-    text-decoration: underline solid darkcyan 3px;
+    text-decoration: underline solid var(--accent) 3px;
+    letter-spacing: 2px;
 }
 .h1:any-link, .h2:any-link{
     color: var(--text);
@@ -42,11 +48,11 @@ form{
     grid-template-columns: 1fr 1fr;
 }
 .column{
-    background-color: #111;
+    background-color: var(--surfaces);
     margin: 0px auto;
     width: calc(100% - 20px);
     height: calc(100% - 10px);
-    border: darkcyan solid 2px;
+    border: var(--accent) solid 2px;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -58,11 +64,11 @@ form{
     padding: 10px;
     font-size: 35px;
     text-align: center;
-    border-bottom: solid darkcyan 2px;
+    border-bottom: solid var(--accent) 2px;
     letter-spacing: 2px;
-    text-decoration: underline solid darkcyan 3px;
+    text-decoration: underline solid var(--accent) 3px;
     text-underline-offset: 4px;
-    background-color: #0b0b0b;
+    background-color: var(--dark);
     border-radius: 8px 8px 0px 0px;
     -webkit-border-radius: 8px 8px 0px 0px;
     -moz-border-radius: 8px 8px 0px 0px;
@@ -80,8 +86,8 @@ form{
 .player-card{
     margin: 20px;
     font-size: 25px;
-    background-color: #171717;
-    border: darkcyan solid 2px;
+    background-color: var(--dark);
+    border: var(--accent) solid 2px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -107,7 +113,7 @@ form{
     color: var(--text);
     background-color: transparent;
     border: none;
-    border-bottom: solid 2px darkcyan;
+    border-bottom: solid 2px var(--accent);
     color: var(--text);
     width: 100%;
 }
@@ -120,7 +126,7 @@ form{
     outline: none;
     height: 50px;
 }
-.disable{
+.enabled{
     background-color: #494;
     font-size: 30px;
     text-align: center;
@@ -129,7 +135,7 @@ form{
     align-items: center;
     cursor: pointer;
 }
-.enable{
+.disabled{
     background-color: #e43;
     font-size: 30px;
     text-align: center;
@@ -159,7 +165,7 @@ form{
     font-size: 23px;
     background-color: transparent;
     border: none;
-    border-bottom: solid 2px darkcyan;
+    border-bottom: solid 2px var(--accent);
     color: var(--text);
     width: 100%;
 }
@@ -167,7 +173,7 @@ form{
     outline: none;
 }
 #right{
-    border-left: solid 2px darkcyan;
+    border-left: solid 2px var(--accent);
 }
 #win-condition{
     font-family: Roboto;
@@ -179,16 +185,16 @@ form{
     width: 100%;
     background-color: transparent;
     border: none;
-    border-bottom: solid 2px darkcyan;
+    border-bottom: solid 2px var(--accent);
 }
 #win-condition:focus{
     outline: none;
 }
 #win-condition option{
-    background-color: #111;
+    background-color: var(--surfaces);
 }
 #next{
-    background-color: #0b0b0b;
+    background-color: var(--dark);
     border: none;
     display: block;
     margin: auto;
@@ -200,7 +206,7 @@ form{
     width: calc(100% - 30px);
     height: 60px;
     padding-bottom: 61px;
-    border: solid darkcyan 2px;
+    border: solid var(--accent) 2px;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -209,5 +215,5 @@ form{
     cursor: pointer;
 }
 #next:hover{
-    background-color: #171717;
+    background-color: var(--background);
 }
