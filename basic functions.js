@@ -61,9 +61,14 @@ function checker(c,size){
             c.fillRect(x*size, y*size, size, size)
         }
     }
-    c.fillStyle = '#0b0b0b'
+    c.fillStyle = 'dakcyan'
     c.fillRect(0, 0, size*2+1, size*2+1)
-    c.fillRect(0, (boardSize+2)*size, size*2, size*2)
-    c.fillRect((boardSize+2)*size, 0, size*2, size*2)
+    c.fillRect(0, (boardSize+2)*size-1, size*2+1, size*2+1)
+    c.fillRect((boardSize+2)*size-1, 0, size*2+1, size*2+1)
     c.fillRect((boardSize+2)*size-1, (boardSize+2)*size-1, size*2+1, size*2+1)
+    c.fillStyle = '#0b0b0b'
+    c.fillRect(0, 0, size*2-5, size*2-5)
+    c.fillRect(0, (boardSize+2)*size+5, size*2-5, size*2-5)
+    c.fillRect((boardSize+2)*size+5, 0, size*2-5, size*2-5)
+    c.fillRect((boardSize+2)*size+5, (boardSize+2)*size+5, size*2, size*2)
 }

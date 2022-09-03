@@ -147,3 +147,10 @@ canvas{
     -o-border-radius: 8px;
     cursor: pointer;
 }
+#pieces{
+    position: fixed;
+    width: 55.5vw;
+    height: 100vh;
+    top: 0px;
+    left: 22.5vw;
+}

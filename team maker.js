@@ -2,16 +2,16 @@ const settings = eval(localStorage.getItem('settings'))
 const players = eval(localStorage.getItem('players'))
 
 let setting = 0
-if ((localStorage.getItem('teamReady1') == false || localStorage.getItem('teamReady1') == null) && players.enable1 ){
+if ((localStorage.getItem('teamReady1') == 'false' || localStorage.getItem('teamReady1') == null) && players.enable1 ){
     setting = 1
 }
-else if ((localStorage.getItem('teamReady2') == false || localStorage.getItem('teamReady2') == null) && players.enable2){
+else if ((localStorage.getItem('teamReady2') == 'false' || localStorage.getItem('teamReady2') == null) && players.enable2){
     setting = 2
 }
-else if ((localStorage.getItem('teamReady3') == false || localStorage.getItem('teamReady3') == null) && players.enable3){
+else if ((localStorage.getItem('teamReady3') == 'false' || localStorage.getItem('teamReady3') == null) && players.enable3){
     setting = 3
 }
-else if ((localStorage.getItem('teamReady4') == false || localStorage.getItem('teamReady4') == null) && players.enable4){
+else if ((localStorage.getItem('teamReady4') == 'false' || localStorage.getItem('teamReady4') == null) && players.enable4){
     setting = 4
 } else {
     window.location = "./game.html"

@@ -40,7 +40,7 @@ if (players.enable1){
         if(pieces[team1[1][i]]!=undefined){
             board.push(new pieces[team1[1][i]].constructor( boardSize-i+1, 0, players.name1))
         }
-}
+    }
 }
 // team 2
 if (players.enable2){
@@ -51,7 +51,7 @@ if (players.enable2){
         if(pieces[team1[1][i]]!=undefined){
             board.push(new pieces[team2[1][i]].constructor( boardSize+3, boardSize-i+1, players.name2))
         }
-}
+    }
 }
 // team 3
 if (players.enable3){
@@ -62,7 +62,7 @@ if (players.enable3){
         if(pieces[team1[1][i]]!=undefined){
             board.push(new pieces[team1[1][i]].constructor( i+2, boardSize+3, players.name3))
         }
-}
+    }
 }
 // team 4
 if (players.enable4){
@@ -73,5 +73,5 @@ if (players.enable4){
         if(pieces[team1[1][i]]!=undefined){
             board.push(new pieces[team2[1][i]].constructor( 0, i+2, players.name4))
         }
-}
+    }
 }

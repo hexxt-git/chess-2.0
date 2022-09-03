@@ -1,3 +1,8 @@
+localStorage.setItem('teamReady1', 'false')
+localStorage.setItem('teamReady2', 'false')
+localStorage.setItem('teamReady3', 'false')
+localStorage.setItem('teamReady4', 'false')
+
 olderSettings = eval(localStorage.getItem('settings'))
 olderPlayers = eval(localStorage.getItem('players'))
 if(olderSettings != null){

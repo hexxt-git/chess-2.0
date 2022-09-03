@@ -11,9 +11,6 @@ class Piece{
     talk(){
         write(`I'm a ${this.constructor.name} at ${this.x}, ${this.y} from team ${this.team}`)
     }
-    render(c, size){
-        c.drawImage($('image'), this.x*size, this.y*size, size, size)
-    }
 }
 class Pawn extends Piece{
     constructor(x, y, team){
