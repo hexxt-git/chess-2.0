@@ -54,3 +54,16 @@ function pieceAt(board, x, y){
     }
     return null
 };
+function checker(c,size){
+    for( let x = 0 ; x < size+4 ; x++){
+        for( let y = 0 ; y < size+4 ; y++){
+            c.fillStyle = (x+y%2)%2?'#0b0b0b':'darkcyan'
+            c.fillRect(x*size, y*size, size, size)
+        }
+    }
+    c.fillStyle = '#0b0b0b'
+    c.fillRect(0, 0, size*2+1, size*2+1)
+    c.fillRect(0, (boardSize+2)*size, size*2, size*2)
+    c.fillRect((boardSize+2)*size, 0, size*2, size*2)
+    c.fillRect((boardSize+2)*size-1, (boardSize+2)*size-1, size*2+1, size*2+1)
+}

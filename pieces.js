@@ -11,10 +11,14 @@ class Piece{
     talk(){
         write(`I'm a ${this.constructor.name} at ${this.x}, ${this.y} from team ${this.team}`)
     }
+    render(c, size){
+        c.drawImage($('image'), this.x*size, this.y*size, size, size)
+    }
 }
 class Pawn extends Piece{
     constructor(x, y, team){
         super(x, y, team)
+        this.src = './pieces/pawn.png'
     }
     canMove(board, x, y){
         if ( Math.abs(this.x-x) == 1 && Math.abs(this.y-y) == 1 ){
@@ -34,6 +38,7 @@ class Pawn extends Piece{
 class Knight extends Piece{
     constructor(x, y, team){
         super(x, y, team)
+        this.src = './pieces/knight.png'
     }
     canMove(board, x, y){
         if ((this.x == x+1 & this.y == y+2) | (this.x == x+1 & this.y == y-2) | (this.x == x-1 & this.y == y+2) | (this.x == x-1 & this.y == y-2)|
@@ -54,6 +59,7 @@ class Knight extends Piece{
 class Rook extends Piece{
     constructor(x, y, team){
         super(x, y, team)
+        this.src = './pieces/rook.png'
     }
     canMove(board, x, y){
         if (this.x == x | this.y == y){
@@ -79,6 +85,7 @@ class Rook extends Piece{
 class Bishop extends Piece{
     constructor(x, y, team){
         super(x, y, team)
+        this.src = './pieces/bishop.png'
     }
     canMove(board, x, y){
         if (Math.abs(this.x-x) == Math.abs(this.y-y)){
@@ -104,6 +111,7 @@ class Bishop extends Piece{
 class Queen extends Piece{
     constructor(x, y, team){
         super(x, y, team)
+        this.src = './pieces/queen.png'
     }
     canMove(board, x, y){
         if (this.x == x | this.y == y | Math.abs(this.x-x) == Math.abs(this.y-y)){
@@ -129,6 +137,7 @@ class Queen extends Piece{
 class King extends Piece{
     constructor(x, y, team){
         super(x, y, team)
+        this.src = './pieces/king.png'
     }
     canMove(board, x, y){
         if ( Math.abs(this.x-x) == 1 && Math.abs(this.y-y) == 1 ){
@@ -145,3 +154,42 @@ class King extends Piece{
         return NO
     }
 }
+
+const pieces = [
+    {
+        name: 'pawn',
+        cost: 1,
+        src: './pieces/pawn.png',
+        constructor: Pawn
+    },
+    {
+        name: 'king',
+        cost: 2,
+        src: './pieces/king.png',
+        constructor: King
+    },
+    {
+        name: 'rook',
+        cost: 3,
+        src: './pieces/rook.png',
+        constructor: Rook
+    },
+    {
+        name: 'bishop',
+        cost: 5,
+        src: './pieces/bishop.png',
+        constructor: Bishop
+    },
+    {
+        name: 'knight',
+        cost: 7,
+        src: './pieces/knight.png',
+        constructor: Knight
+    },
+    {
+        name: 'queen',
+        cost: 10,
+        src: './pieces/queen.png',
+        constructor: Queen
+    },
+]

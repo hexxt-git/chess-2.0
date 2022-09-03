@@ -1,5 +1,15 @@
-board = [
-    new Queen(0, 1, 'jhon'),
-    new Knight(0, 0, 'jhon'),
-]
-write(pieceAt(board, 0, 1).canMove(board, 0, 0))
+updateCards(board,1)
+
+canvas = $('canvas')
+container = $('containerB')
+canvas.width = container.clientWidth
+canvas.height = container.clientHeight
+
+size = container.clientHeight / (boardSize+4)
+
+c = canvas.getContext('2d')
+checker(c,size)
+
+for(i in board){
+    board[i].render(c, size)
+}

@@ -2,10 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
 *{
     --background: #181818;
-    --text: #EEE;
-    --accent: darkcyan;
-    --dark: #0b0b0b;
     --surfaces: #111;
+    --accent: darkcyan;
+    --darker: #080808;
+    --dark: #0b0b0b;
+    --text: #EEE;
+    --grey: #333;
 }
 body{
     background-color: var(--surfaces);
@@ -67,6 +69,6 @@ main{
     cursor: pointer;
 }
 .go-button:hover{
-    background-color: var(--background);
+    background-color: var(--darker);
 }
 
