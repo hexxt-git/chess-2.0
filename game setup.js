@@ -8,6 +8,7 @@ if(olderSettings != null){
     $('board').options.selectedIndex = olderSettings.board
     $('undos').value = olderSettings.undos
     $('skips').value = olderSettings.skip
+    $('balance').value = olderSettings.balance
 }
 if(olderPlayers != null){
     $('name1').value = olderPlayers.name1
@@ -39,6 +40,7 @@ function update(){
             board: $('board').options.selectedIndex,
             undos: $('undos').value,
             skip: $('skips').value,
+            balance: $('balance').value
         }
         players = {
             name1: $('name1').value,
