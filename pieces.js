@@ -1,7 +1,3 @@
-const NO = 0
-const YES = 1
-const KILL = 2
-
 class Piece{
     constructor(x, y, team){
         this.x = x
@@ -15,7 +11,7 @@ class Piece{
 class Pawn extends Piece{
     constructor(x, y, team){
         super(x, y, team)
-        this.src = './pieces/pawn.png'
+        this.src = './playing pieces/pawn.png'
     }
     canMove(board, x, y){
         if ( Math.abs(this.x-x) == 1 && Math.abs(this.y-y) == 1 ){
@@ -35,7 +31,7 @@ class Pawn extends Piece{
 class Knight extends Piece{
     constructor(x, y, team){
         super(x, y, team)
-        this.src = './pieces/knight.png'
+        this.src = './playing pieces/knight.png'
     }
     canMove(board, x, y){
         if ((this.x == x+1 & this.y == y+2) | (this.x == x+1 & this.y == y-2) | (this.x == x-1 & this.y == y+2) | (this.x == x-1 & this.y == y-2)|
@@ -56,7 +52,7 @@ class Knight extends Piece{
 class Rook extends Piece{
     constructor(x, y, team){
         super(x, y, team)
-        this.src = './pieces/rook.png'
+        this.src = './playing pieces/rook.png'
     }
     canMove(board, x, y){
         if (this.x == x | this.y == y){
@@ -82,7 +78,7 @@ class Rook extends Piece{
 class Bishop extends Piece{
     constructor(x, y, team){
         super(x, y, team)
-        this.src = './pieces/bishop.png'
+        this.src = './playing pieces/bishop.png'
     }
     canMove(board, x, y){
         if (Math.abs(this.x-x) == Math.abs(this.y-y)){
@@ -108,7 +104,7 @@ class Bishop extends Piece{
 class Queen extends Piece{
     constructor(x, y, team){
         super(x, y, team)
-        this.src = './pieces/queen.png'
+        this.src = './playing pieces/queen.png'
     }
     canMove(board, x, y){
         if (this.x == x | this.y == y | Math.abs(this.x-x) == Math.abs(this.y-y)){
@@ -134,7 +130,7 @@ class Queen extends Piece{
 class King extends Piece{
     constructor(x, y, team){
         super(x, y, team)
-        this.src = './pieces/king.png'
+        this.src = './playing pieces/king.png'
     }
     canMove(board, x, y){
         if ( Math.abs(this.x-x) == 1 && Math.abs(this.y-y) == 1 ){

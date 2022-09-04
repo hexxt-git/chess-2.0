@@ -97,6 +97,7 @@ function update(){
 update()
 
 $('next').addEventListener('click', ()=>{
+    localStorage.setItem('team'+setting, JSON.stringify(board))
     localStorage.setItem('teamReady'+setting, 'true')
     location.reload()
 })

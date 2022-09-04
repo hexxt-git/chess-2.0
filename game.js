@@ -1,5 +1,3 @@
-updateCards(board,1)
-
 canvas = $('canvas')
 container = $('containerB')
 canvas.width = container.clientWidth
@@ -8,24 +6,14 @@ size = container.clientHeight / (boardSize+4)
 
 c = canvas.getContext('2d')
 
+let turn = 0
+let state = NEWMOVE
+let selected = 0
+let piecesTaken = [0, 0, 0, 0]
+let undos = [settings.undos, settings.undos, settings.undos, settings.undos]
+let skips = [settings.skips, settings.skips, settings.skips, settings.skips]
+
+
 checker(c,size)
-
-let x = 2
-let y = 3
-
-for(i in board){
-    $('pieces').innerHTML += `
-    <img
-        src="${board[i].src}"
-        style="
-            filter: invert(1);
-            width: ${size}px;
-            height: ${size}px;
-            position: fixed;
-            top: ${$('canvas').offsetTop + board[i].y*size}px;
-            left: ${$('canvas').offsetLeft + board[i].x*size}px;
-            cursor: pointer;
-        "
-    >
-    `
-}
+updateCards(board, (turn%participants)+1, piecesTaken, undos, skips)
+updatePieces(board)

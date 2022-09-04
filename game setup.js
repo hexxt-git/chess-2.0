@@ -12,7 +12,7 @@ if(olderSettings != null){
     $('win-condition').options.selectedIndex = olderSettings.win_condition
     $('board').options.selectedIndex = olderSettings.board
     $('undos').value = olderSettings.undos
-    $('skips').value = olderSettings.skip
+    $('skips').value = olderSettings.skips
     $('balance').value = olderSettings.balance
 }
 if(olderPlayers != null){
@@ -44,7 +44,7 @@ function update(){
             win_condition: $('win-condition').options.selectedIndex,
             board: $('board').options.selectedIndex,
             undos: $('undos').value,
-            skip: $('skips').value,
+            skips: $('skips').value,
             balance: $('balance').value
         }
         players = {
