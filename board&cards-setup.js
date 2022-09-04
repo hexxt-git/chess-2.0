@@ -44,7 +44,7 @@ function updatePieces(board){
             style="
                 filter: 
                     hue-rotate(${color[0]}deg)
-                    saturate(${color[1]*2}%)
+                    saturate(${color[1]}%)
                     brightness(${Math.pow(color[2],2)/10}%)
                     ${state==MOVING&i==selected?'drop-shadow( 0px 0px 3px #fff)':''}
                 ;
@@ -53,20 +53,21 @@ function updatePieces(board){
                 position: fixed;
                 left: ${$('canvas').offsetLeft + board[i].x*size}px;
                 top:  ${$('canvas').offsetTop  + board[i].y*size}px;
-                cursor: pointer;
+                cursor: ${ state == NEWMOVE ? 'pointer' : ''};
             "
         />`
     }
-    for(let i = 0 ; i < board.length ; i++){
-        $('piece-'+i).addEventListener('click',()=>{
-            if (state == NEWMOVE){
-                selected = i
-                state = MOVING
-            }
-            updatePieces(board)
-        })
+    if (state == NEWMOVE){
+        for(let i = 0 ; i < board.length ; i++){
+            $('piece-'+i).addEventListener('click',()=>{
+                    selected = i
+                    state = MOVING
+                updatePieces(board)
+            })
+        }
     }
     if (state == MOVING){
+        let moves = 0
         for(let x = 0 ; x < boardSize+4 ; x++){
             for(let y = 0 ; y < boardSize+4 ; y++){
                 if(x<=1&y<=1) continue
@@ -75,6 +76,7 @@ function updatePieces(board){
                 if(x<=1&y-2>=boardSize) continue
                 let canMove = board[selected].canMove(board, x, y)
                 if( canMove == NO ) continue
+                moves++
                 $('pieces').innerHTML += `
                     <div style="
                         position: fixed;
@@ -82,14 +84,19 @@ function updatePieces(board){
                         left: ${$('canvas').offsetLeft + x*size + 5}px;
                         width: ${size-10}px;
                         height: ${size-10}px;
-                        background: ${canMove==1?'#fff6':'#f556'};
+                        background: ${canMove==1?'#eee8':'#c337'};
                         border-radius: 100%;
-                        filter: blur(1px);
-                        z-index: -1;
+                        filter: drop-shadow( 0px 0px 2px ${canMove==1?'#bbbb':'#c33c'});
                         cursor: pointer;
-                    "></div>
+                    "
+                        id="move-${moves}"
+                        class="{x:${x},y:${y},move:${canMove}}"
+                    ></div>
                 `
             }
+        }
+        for(let i = 0 ; i < moves ; i++){
+            
         }
     }
 }
