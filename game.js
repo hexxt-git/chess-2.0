@@ -27,6 +27,11 @@ function updateCards(){
                     <div>SKIP</div>
                 </div>
             </div>`*/
+        } else {
+            $('side'+(i==1|i==4?0:1)).innerHTML += `
+            <div class="player-info${turn==i-1?'-selected':''}"></div>
+            
+            `
         }
     }
 }
@@ -136,6 +141,20 @@ function updatePieces(){
             })
         }
     }
+    
+    for( let m = 0 ; m < 5 ; m++ ){
+        if( turn==0 & !players.enable1 ) turn += 1
+        if( turn==1 & !players.enable2 ) turn += 1
+        if( turn==2 & !players.enable3 ) turn += 1
+        if( turn==3 & !players.enable4 ) turn = 0
+    }
+
+    let save = '[['
+    for( i in board ){
+        save += 'new '+board[i].constructor.name+'('+board[i].x+','+board[i].y+','+board[i].team+'),'
+    }
+    save += '],'+turn+']'
+    localStorage.setItem('continue', save)
 }
 function test4win(){
     for (let i=1 ; i<=4 ; i++){
@@ -158,61 +177,72 @@ function test4win(){
     }
     copy = board.filter( p => players['enable'+p.team])
     board = copy
-    for( let m = 0 ; m < 5 ; m++ ){
-        if( turn==0 & !players.enable1 ) turn += 1
-        if( turn==1 & !players.enable2 ) turn += 1
-        if( turn==2 & !players.enable3 ) turn += 1
-        if( turn==3 & !players.enable4 ) turn = 0
-    }
 }
 
 
 const boardSize = [ 8, 10, 14, 20][settings.board]
-board = []
 
-// team 1
-if (players.enable1){
-    for( let i = 0 ; i < boardSize ; i++ ){
-        if(pieces[team1[0][i]]!=undefined){
-            board.push(new pieces[team1[0][i]].constructor( boardSize-i+1, 1, 1))
-        }
-        if(pieces[team1[1][i]]!=undefined){
-            board.push(new pieces[team1[1][i]].constructor( boardSize-i+1, 0, 1))
+let board = []
+let turn = 0
+
+if(localStorage.getItem('continue')=='false'|localStorage.getItem('continue')==null){
+    // team 1
+    if (players.enable1){
+        for( let i = 0 ; i < boardSize ; i++ ){
+            if(pieces[team1[0][i]]!=undefined){
+                board.push(new pieces[team1[0][i]].constructor( boardSize-i+1, 1, 1))
+            }
+            if(pieces[team1[1][i]]!=undefined){
+                board.push(new pieces[team1[1][i]].constructor( boardSize-i+1, 0, 1))
+            }
         }
     }
+    // team 2
+    if (players.enable2){
+        for( let i = 0 ; i < boardSize ; i++ ){
+            if(pieces[team2[0][i]]!=undefined){
+                board.push(new pieces[team2[0][i]].constructor( boardSize+2, boardSize-i+1, 2))
+            }
+            if(pieces[team2[1][i]]!=undefined){
+                board.push(new pieces[team2[1][i]].constructor( boardSize+3, boardSize-i+1, 2))
+            }
+        }
+    }
+    // team 3
+    if (players.enable3){
+        for( let i = 0 ; i < boardSize ; i++ ){
+            if(pieces[team3[0][i]]!=undefined){
+                board.push(new pieces[team3[0][i]].constructor( i+2, boardSize+2, 3))
+            }
+            if(pieces[team3[1][i]]!=undefined){
+                board.push(new pieces[team3[1][i]].constructor( i+2, boardSize+3, 3))
+            }
+        }
+    }
+    // team 4
+    if (players.enable4){
+        for( let i = 0 ; i < boardSize ; i++ ){
+            if(pieces[team4[0][i]]!=undefined){
+                board.push(new pieces[team4[0][i]].constructor( 1, i+2, 4))
+            }
+            if(pieces[team4[1][i]]!=undefined){
+                board.push(new pieces[team4[1][i]].constructor( 0, i+2, 4))
+            }
+        }
+    }
+} else {
+    data = eval(localStorage.getItem('continue'))
+    console.log(data)
+    board = data[0]
+    turn = data[1]
 }
-// team 2
-if (players.enable2){
-    for( let i = 0 ; i < boardSize ; i++ ){
-        if(pieces[team2[0][i]]!=undefined){
-            board.push(new pieces[team2[0][i]].constructor( boardSize+2, boardSize-i+1, 2))
-        }
-        if(pieces[team2[1][i]]!=undefined){
-            board.push(new pieces[team2[1][i]].constructor( boardSize+3, boardSize-i+1, 2))
-        }
-    }
-}
-// team 3
-if (players.enable3){
-    for( let i = 0 ; i < boardSize ; i++ ){
-        if(pieces[team3[0][i]]!=undefined){
-            board.push(new pieces[team3[0][i]].constructor( i+2, boardSize+2, 3))
-        }
-        if(pieces[team3[1][i]]!=undefined){
-            board.push(new pieces[team3[1][i]].constructor( i+2, boardSize+3, 3))
-        }
-    }
-}
-// team 4
-if (players.enable4){
-    for( let i = 0 ; i < boardSize ; i++ ){
-        if(pieces[team4[0][i]]!=undefined){
-            board.push(new pieces[team4[0][i]].constructor( 1, i+2, 4))
-        }
-        if(pieces[team4[1][i]]!=undefined){
-            board.push(new pieces[team4[1][i]].constructor( 0, i+2, 4))
-        }
-    }
+
+for( let m = 0 ; m < 5 ; m++ ){
+    if( turn==0 & !players.enable1 ) turn += 1
+    if( turn==1 & !players.enable2 ) turn += 1
+    if( turn==2 & !players.enable3 ) turn += 1
+    if( turn==3 & !players.enable4 ) turn = 0
+    if( turn==4 ) turn = 0
 }
 
 canvas = $('canvas')
@@ -223,7 +253,6 @@ size = container.clientHeight / (boardSize+4)
 
 c = canvas.getContext('2d')
 
-let turn = 0
 if (!players.enable1) turn++
 if (!players.enable2) turn++
 let state = NEWMOVE

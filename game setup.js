@@ -2,6 +2,7 @@ localStorage.setItem('teamReady1', 'false')
 localStorage.setItem('teamReady2', 'false')
 localStorage.setItem('teamReady3', 'false')
 localStorage.setItem('teamReady4', 'false')
+localStorage.setItem('continue', 'false')
 
 olderSettings = eval(localStorage.getItem('settings'))
 olderPlayers = eval(localStorage.getItem('players'))
@@ -74,10 +75,18 @@ for(let i = 1 ; i <= 4 ; i++){
         if($('enable'+i).className == 'disabled'){
             $('enable'+i).className  = 'enabled'
             $('enable'+i).innerHTML  = 'disable'
+            $('name'+i).required = true
         }
         else{
             $('enable'+i).className  = 'disabled'
             $('enable'+i).innerHTML  = 'enable'
+            $('name'+i).required = false
         }
     })
+    if($('enable'+i).className == 'disabled'){
+        $('name'+i).required = false
+    }
+    else{
+        $('name'+i).required = true
+    }
 }
