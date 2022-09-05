@@ -255,8 +255,6 @@ size = container.clientHeight / (boardSize+4)
 
 c = canvas.getContext('2d')
 
-if (!players.enable1) turn++
-if (!players.enable2) turn++
 let state = NEWMOVE
 let selected = 0
 let piecesTaken = [0, 0, 0, 0]
