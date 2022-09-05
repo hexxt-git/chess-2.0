@@ -132,6 +132,7 @@ function updatePieces(){
                     if( turn==1 & !players.enable2 ) turn += 1
                     if( turn==2 & !players.enable3 ) turn += 1
                     if( turn==3 & !players.enable4 ) turn = 0
+                    if( turn==4 ) turn = 0
                 }
 
                 board[selected].x = move.x
@@ -147,6 +148,7 @@ function updatePieces(){
         if( turn==1 & !players.enable2 ) turn += 1
         if( turn==2 & !players.enable3 ) turn += 1
         if( turn==3 & !players.enable4 ) turn = 0
+        if( turn==4 ) turn = 0
     }
 
     let save = '[['
