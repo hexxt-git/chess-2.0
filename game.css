@@ -147,7 +147,7 @@ canvas{
     -o-border-radius: 8px;
     cursor: pointer;
 }
-#pieces{
+#overlay{
     position: fixed;
     width: 55.5vw;
     height: 100vh;
