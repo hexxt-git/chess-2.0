@@ -93,7 +93,7 @@ function updatePieces(){
                         width: ${size-10}px;
                         height: ${size-10}px;
                         background: ${canMove==1?'#eee8':'#c337'};
-                        border-radius: 100%;
+                        border-radius: 10%;
                         filter: drop-shadow( 0px 0px 2px ${canMove==1?'#bbbb':'#c33c'});
                         cursor: pointer;
                         "
@@ -155,7 +155,8 @@ function updatePieces(){
     for( i in board ){
         save += 'new '+board[i].constructor.name+'('+board[i].x+','+board[i].y+','+board[i].team+'),'
     }
-    save += '],'+turn+']'
+    save += '],'+turn+','
+    save += `[ ${piecesTaken[0]}, ${piecesTaken[1]}, ${piecesTaken[2]}, ${piecesTaken[3]} ]]`
     localStorage.setItem('continue', save)
 }
 function test4win(){
@@ -180,12 +181,24 @@ function test4win(){
     copy = board.filter( p => players['enable'+p.team])
     board = copy
 }
-
+function fix(){
+    setTimeout(()=>{
+        requestAnimationFrame(fix)
+        canvas.width = container.clientWidth
+        canvas.height = container.clientHeight
+        size = container.clientHeight / (boardSize+4)
+        checker( c,size)
+        updatePieces()
+        updateCards()
+    }, 2000)
+}
 
 const boardSize = [ 8, 10, 14, 20][settings.board]
-
 let board = []
 let turn = 0
+let piecesTaken = [0, 0, 0, 0]
+let undos = [settings.undos, settings.undos, settings.undos, settings.undos]
+let skips = [settings.skips, settings.skips, settings.skips, settings.skips]
 
 if(localStorage.getItem('continue')=='false'|localStorage.getItem('continue')==null){
     // team 1
@@ -237,6 +250,7 @@ if(localStorage.getItem('continue')=='false'|localStorage.getItem('continue')==n
     console.log(data)
     board = data[0]
     turn = data[1]
+    piecesTaken = eval(data[2])
 }
 
 for( let m = 0 ; m < 5 ; m++ ){
@@ -253,15 +267,13 @@ canvas.width = container.clientWidth
 canvas.height = container.clientHeight
 size = container.clientHeight / (boardSize+4)
 
-c = canvas.getContext('2d')
+let c = canvas.getContext('2d')
 
 let state = NEWMOVE
 let selected = 0
-let piecesTaken = [0, 0, 0, 0]
-let undos = [settings.undos, settings.undos, settings.undos, settings.undos]
-let skips = [settings.skips, settings.skips, settings.skips, settings.skips]
 
 
 checker(c,size)
 updatePieces()
 updateCards()
+fix()

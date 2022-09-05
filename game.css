@@ -9,16 +9,26 @@
     --text: #EEE;
     --grey: #333;
 }
-body{
+body {
     background-color: var(--background);
     color: var(--text);
     font-family: Roboto;
     user-select: none;
-    overflow: hidden;
     margin: 0px;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+}
+header{
+    background-color: var(--surfaces);
+    margin: 10px;
+    border: solid var(--accent) 3px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 main{
-    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr;
 }
@@ -37,7 +47,7 @@ main{
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
-    max-height: calc( 100vh - 30px);
+    max-height: calc( 100vh - 140px );
     aspect-ratio: 1/1;
     display: flex;
 }
