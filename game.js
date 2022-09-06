@@ -37,12 +37,35 @@ function updateCards(){
         $('skip-'+i).addEventListener('click',()=>{
             if(skips[i-1] > 0){
                 if( turn+1 == i ){
+                    write(players['name'+i]+' skipped his move')
                     skips[i-1] = skips[i-1] - 1
                     turn += 1
                     turnsPLayed += 1
                     state = NEWMOVE
                     updatePieces()
                     updateCards()
+                }
+            }
+        })
+        $('undo-'+i).addEventListener('click',()=>{
+            if(undos[i-1] > 0){
+                if(turn+1 == i){
+                    if(undoTo.length >= 1){
+                        if(board!=undoTo[undoTo.length-1][0]){
+                            write(players['name'+i]+' undid the last move')
+                            undos[i-1] = undos[i-1] - 1
+                            board = undoTo[undoTo.length-1][0]
+                            piecesTaken = undoTo[undoTo.length-1][1]
+                            //turn = undoTo[undoTo.length-1][2]
+                            for(let i of [1,2,3,4]) players['enable'+i] = undoTo[undoTo.length-1][3][i-1]
+                            undoTo.pop()
+                            state = NEWMOVE
+                            updatePieces()
+                            updateCards()
+                        }
+                    } else {
+                        error('nothing to go back to')
+                    }
                 }
             }
         })
@@ -139,8 +162,9 @@ function updatePieces(){
         }
         for(let i = 1 ; i <= moves ; i++){
             $('move-'+i).addEventListener('click',()=>{
+                addUndo()
                 let move = eval('('+$('move-'+i).className+')')
-                console.log(players['name'+(turn+1)]+': '+board[selected].constructor.name+' from (x: '+board[selected].x+', y: '+board[selected].y+') to (x: '+move.x+', y: '+move.y+')')
+                write(players['name'+(turn+1)]+': '+board[selected].constructor.name+' from (x: '+board[selected].x+', y: '+board[selected].y+') to (x: '+move.x+', y: '+move.y+')')
                 state = NEWMOVE
                 if ( move.move == KILL ){
                     index = pieceAtIndex(board, move.x, move.y)
@@ -199,7 +223,7 @@ function test4win(){
         for ( let j in board ) pieces += board[j].team == i ? 1 : 0
         if ( pieces == 0 & players['enable'+i] ){
             players['enable'+i] = false
-            console.log(players['name'+i]+' was eliminated')
+            write(players['name'+i]+' was eliminated')
         }
     }
     if( settings.win_condition == 0){
@@ -208,11 +232,11 @@ function test4win(){
             for ( let j in board ) kings += board[j].team == i & board[j].constructor.name == 'King' ? 1 : 0
             if ( kings == 0 & players['enable'+i] ){
                 players['enable'+i] = false
-                console.log(players['name'+i]+' was eliminated')
+                write(players['name'+i]+' was eliminated')
             }
         }
     }
-    copy = board.filter( p => players['enable'+p.team])
+    copy = board.filter( i => players['enable'+i.team])
     board = copy
 }
 function fix(){
@@ -232,6 +256,19 @@ function updateTimers(){
         timers[turn] = Math.floor(timers[turn] * 10) / 10
         updateHeader()
     },100)
+}
+function addUndo(){
+    let currentState = []
+    let currentBoard = []
+    let enables = []
+    for(let i of [1,2,3,4]) enables.push(players['enable'+i])
+    for(let i in board) currentBoard.push(new board[i].constructor(board[i].x,board[i].y,board[i].team))
+    currentState.push(currentBoard)
+    currentState.push(piecesTaken)
+    currentState.push(turn)
+    currentState.push(enables)
+    undoTo.push(currentState)
+    while(undoTo.length > undos.reduce((sum, a) => sum + a, 0)) board.shift()
 }
 
 const boardSize = [ 8, 10, 14, 20][settings.board]
@@ -318,6 +355,8 @@ let c = canvas.getContext('2d')
 let state = NEWMOVE
 let selected = 0
 
+let undoTo = []
+addUndo()
 
 checker(c,size)
 updatePieces()

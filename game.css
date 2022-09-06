@@ -20,8 +20,14 @@ body {
     overflow: hidden;
 }
 header{
-    background-color: var(--surfaces);
     margin: 10px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 90px;
+    gap: 10px;
+}
+#header{
+    background-color: var(--surfaces);
     border: solid var(--accent) 3px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -31,13 +37,34 @@ header{
     display: flex;
     justify-content: space-evenly;
 }
-header div{
+#header div{
     display: flex;
     align-items: center;
-    font-size: 30px;
+    font-size: 35px;
 }
-header:hover{
+#header:hover{
     background-color: var(--dark);
+}
+#home{
+    background-color: var(--surfaces);
+    border: solid var(--accent) 3px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#home:hover{
+    background-color: var(--dark);
+}
+#home img{
+    width: 60px;
+    filter: invert(0.8);
+    -webkit-filter: invert(0.8);
 }
 main{
     display: grid;
