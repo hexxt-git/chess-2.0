@@ -12,8 +12,8 @@ if(olderSettings != null){
     //$('plays-per-turn').value = olderSettings.plays_per_turn
     $('win-condition').options.selectedIndex = olderSettings.win_condition
     $('board').options.selectedIndex = olderSettings.board
-    //$('undos').value = olderSettings.undos
-    //$('skips').value = olderSettings.skips
+    $('undos').value = olderSettings.undos
+    $('skips').value = olderSettings.skips
     $('balance').value = olderSettings.balance
 }
 if(olderPlayers != null){
@@ -44,8 +44,8 @@ function update(){
             //plays_per_turn: $('plays-per-turn').value,
             win_condition: $('win-condition').options.selectedIndex,
             board: $('board').options.selectedIndex,
-            //undos: $('undos').value,
-            //skips: $('skips').value,
+            undos: $('undos').value,
+            skips: $('skips').value,
             balance: $('balance').value
         }
         players = {

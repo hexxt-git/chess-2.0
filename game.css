@@ -7,7 +7,7 @@
     --darker: #080808;
     --dark: #0b0b0b;
     --text: #EEE;
-    --grey: #333;
+    --grey: #282828;
 }
 body {
     background-color: var(--background);
@@ -17,6 +17,7 @@ body {
     margin: 0px;
     display: grid;
     grid-template-rows: 100px 1fr;
+    overflow: hidden;
 }
 header{
     background-color: var(--surfaces);
@@ -27,6 +28,16 @@ header{
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+header div{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+}
+header:hover{
+    background-color: var(--dark);
 }
 main{
     display: grid;
@@ -37,6 +48,8 @@ main{
     grid-template-rows: 1fr 1fr;
     margin-top: 15px;
     overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 110px);
 }
 #containerB{
     margin: 15px auto;
@@ -70,9 +83,9 @@ canvas{
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
-    font-size: 30px;
+    font-size: 25px;
     display: grid;
-    grid-template-rows: 50px 1fr 80px;
+    grid-template-rows: 50px 1fr 60px;
 }
 .player-info-selected{
     background-color: var(--surfaces);
@@ -85,15 +98,18 @@ canvas{
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
-    font-size: 30px;
+    font-size: 25px;
     display: grid;
-    grid-template-rows: 50px 1fr 80px;
+    grid-template-rows: 50px 1fr 60px;
 }
 .player-info:hover{
     background-color: var(--dark);
 }
+.player-info-selected:hover{
+    background-color: var(--dark);
+}
 .player-name{
-    font-size: 40px;
+    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,7 +117,7 @@ canvas{
     text-underline-offset: 4px;
 }
 .player-name-selected{
-    font-size: 40px;
+    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,7 +126,6 @@ canvas{
 }
 .player-stats{
     padding-left: 10px;
-    line-height: 35px;
 }
 .buttons{
     display: grid;
@@ -123,7 +138,7 @@ canvas{
 }
 .buttons div{
     background-color: var(--dark);
-    font-size: 27px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +160,7 @@ canvas{
 }
 .buttons-selected div{
     background-color: var(--dark);
-    font-size: 27px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;

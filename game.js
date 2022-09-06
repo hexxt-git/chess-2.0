@@ -18,22 +18,43 @@ function updateCards(){
                 <div class="player-stats">
                     pieces taken: <span class="pieces-taken">${piecesTaken[i-1]}</span><br>
                     pieces left: <span class="pieces-left">${left}</span><br>
-                    `/*
                     undos left: <span class="undos-left">${undos[i-1]}</span><br>
                     skips left: <span class="skips-left">${skips[i-1]}</span>
                 </div>
                 <div class="buttons${turn==i-1?'-selected':''}">
-                    <div>UNDO</div>
-                    <div>SKIP</div>
+                    <div id="undo-${i}">UNDO</div>
+                    <div id="skip-${i}">SKIP</div>
                 </div>
-            </div>`*/
+            </div>`
         } else {
             $('side'+(i==1|i==4?0:1)).innerHTML += `
             <div class="player-info${turn==i-1?'-selected':''}"></div>
-            
             `
         }
     }
+    for (let i = 1 ; i <= 4 ; i++){
+        if(!players['enable'+i]) continue
+        $('skip-'+i).addEventListener('click',()=>{
+            if(skips[i-1] > 0){
+                if( turn+1 == i ){
+                    skips[i-1] = skips[i-1] - 1
+                    turn += 1
+                    turnsPLayed += 1
+                    state = NEWMOVE
+                    updatePieces()
+                    updateCards()
+                }
+            }
+        })
+    }
+    updateHeader()
+}
+function updateHeader(){
+    $('header').innerHTML = `
+    <div>turn: <span style="color:${players['color'+(turn+1)]};padding-left:6px;">${players['name'+(turn+1)]}</span></div>
+    <div>time: ${timers[turn]}${timers[turn]%1==0?'.0':''}s</div>
+    <div>turns: ${settings.max_turns-turnsPLayed}</div>
+    `
 }
 function updatePieces(){
     test4win()
@@ -59,10 +80,14 @@ function updatePieces(){
                 background-color: ${color};
                 width: ${size}px;
                 height: ${size}px;
-                filter:
-                    grayscale(${board[i].team-1 == turn? 0: 30}%)
-                ;
-                "></div>
+                ">
+                    <div style="
+                        background-color: #444;
+                        width: ${size}px;
+                        height: ${size}px;
+                        opacity: ${board[i].team-1==turn?'0%':'70%'};
+                    "></div>
+                </div>
         </div>`
     }
     for(let i = 0 ; i < board.length ; i++){
@@ -115,7 +140,7 @@ function updatePieces(){
         for(let i = 1 ; i <= moves ; i++){
             $('move-'+i).addEventListener('click',()=>{
                 let move = eval('('+$('move-'+i).className+')')
-                console.log(players['name'+(turn+1)]+': '+board[selected].constructor.name+' to (x: '+move.x+', y: '+move.y+')')
+                console.log(players['name'+(turn+1)]+': '+board[selected].constructor.name+' from (x: '+board[selected].x+', y: '+board[selected].y+') to (x: '+move.x+', y: '+move.y+')')
                 state = NEWMOVE
                 if ( move.move == KILL ){
                     index = pieceAtIndex(board, move.x, move.y)
@@ -126,6 +151,7 @@ function updatePieces(){
                     piecesTaken[turn%4] += 1
                 }
                 turn += 1
+                turnsPLayed += 1
 
                 for( let m = 0 ; m < 5 ; m++ ){
                     if( turn==0 & !players.enable1 ) turn += 1
@@ -155,8 +181,16 @@ function updatePieces(){
     for( i in board ){
         save += 'new '+board[i].constructor.name+'('+board[i].x+','+board[i].y+','+board[i].team+'),'
     }
-    save += '],'+turn+','
-    save += `[ ${piecesTaken[0]}, ${piecesTaken[1]}, ${piecesTaken[2]}, ${piecesTaken[3]} ]]`
+    save += '],'
+    save += turn+','
+    save += turnsPLayed+','
+    save += `[ ${piecesTaken[0]}, ${piecesTaken[1]}, ${piecesTaken[2]}, ${piecesTaken[3]} ],`
+    save += `[ ${timers[0]}, ${timers[1]}, ${timers[2]}, ${timers[3]} ],`
+    save += `[ ${skips[0]}, ${skips[1]}, ${skips[2]}, ${skips[3]} ],`
+    save += `[ ${undos[0]}, ${undos[1]}, ${undos[2]}, ${undos[3]} ]`
+
+    save += ']'
+
     localStorage.setItem('continue', save)
 }
 function test4win(){
@@ -192,13 +226,22 @@ function fix(){
         updateCards()
     }, 2000)
 }
+function updateTimers(){
+    setInterval(()=>{
+        timers[turn] -= 0.1
+        timers[turn] = Math.floor(timers[turn] * 10) / 10
+        updateHeader()
+    },100)
+}
 
 const boardSize = [ 8, 10, 14, 20][settings.board]
 let board = []
 let turn = 0
+let turnsPLayed = 0
 let piecesTaken = [0, 0, 0, 0]
 let undos = [settings.undos, settings.undos, settings.undos, settings.undos]
 let skips = [settings.skips, settings.skips, settings.skips, settings.skips]
+let timers = [settings.max_time, settings.max_time, settings.max_time, settings.max_time]
 
 if(localStorage.getItem('continue')=='false'|localStorage.getItem('continue')==null){
     // team 1
@@ -247,10 +290,13 @@ if(localStorage.getItem('continue')=='false'|localStorage.getItem('continue')==n
     }
 } else {
     data = eval(localStorage.getItem('continue'))
-    console.log(data)
     board = data[0]
     turn = data[1]
-    piecesTaken = eval(data[2])
+    turnsPLayed = data[2]
+    piecesTaken = eval(data[3])
+    timers = eval(data[4])
+    skips = eval(data[5])
+    undos = eval(data[6])
 }
 
 for( let m = 0 ; m < 5 ; m++ ){
@@ -277,3 +323,4 @@ checker(c,size)
 updatePieces()
 updateCards()
 fix()
+updateTimers()
