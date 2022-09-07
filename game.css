@@ -16,11 +16,12 @@ body {
     user-select: none;
     margin: 0px;
     display: grid;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 80px 1fr;
     overflow: hidden;
 }
 header{
     margin: 10px;
+    margin-bottom: 0px;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 90px;
@@ -76,7 +77,7 @@ main{
     margin-top: 15px;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: calc(100vh - 110px);
+    max-height: calc(100vh - 90px);
 }
 #containerB{
     margin: 15px auto;
@@ -87,7 +88,7 @@ main{
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
-    max-height: calc( 100vh - 140px );
+    max-height: calc( 100vh - 115px );
     aspect-ratio: 1/1;
     display: flex;
 }

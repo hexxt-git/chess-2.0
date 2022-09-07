@@ -55,7 +55,7 @@ function updateCards(){
                             write(players['name'+i]+' undid the last move')
                             undos[i-1] = undos[i-1] - 1
                             board = undoTo[undoTo.length-1][0]
-                            piecesTaken = undoTo[undoTo.length-1][1]
+                            for(let j = 0; j < 4; j++) piecesTaken[j] = undoTo[undoTo.length-1][1][j]
                             //turn = undoTo[undoTo.length-1][2]
                             for(let i of [1,2,3,4]) players['enable'+i] = undoTo[undoTo.length-1][3][i-1]
                             undoTo.pop()
@@ -264,7 +264,7 @@ function addUndo(){
     for(let i of [1,2,3,4]) enables.push(players['enable'+i])
     for(let i in board) currentBoard.push(new board[i].constructor(board[i].x,board[i].y,board[i].team))
     currentState.push(currentBoard)
-    currentState.push(piecesTaken)
+    currentState.push(eval(JSON.stringify(piecesTaken)))
     currentState.push(turn)
     currentState.push(enables)
     undoTo.push(currentState)
@@ -356,7 +356,6 @@ let state = NEWMOVE
 let selected = 0
 
 let undoTo = []
-addUndo()
 
 checker(c,size)
 updatePieces()

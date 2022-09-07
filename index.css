@@ -17,7 +17,7 @@ body{
     height: 100vh;
     margin: 0px;
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 200px 2fr;
 }
 header{
     user-select: none;
@@ -30,14 +30,14 @@ header .h1, header .h2{
     margin: 0px;
 }
 header .h1{
-    font-size: 110px;
+    font-size: 90px;
     text-decoration: underline solid var(--accent) 4px;
     text-underline-offset: 5px;
     text-align: center;
     letter-spacing: 15px;
 }
 header .h2{
-    font-size: 50px;
+    font-size: 40px;
     text-decoration: underline solid var(--accent) 3px;
     letter-spacing: 10px;
 }
@@ -53,10 +53,10 @@ main{
 }
 .go-button{
     user-select: none;
-    font-size: 35px;
+    font-size: 30px;
     background-color: var(--dark);
-    width: 400px;
-    height: 65px;
+    width: 350px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;

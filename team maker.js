@@ -48,8 +48,9 @@ function update(){
         $('pieces').innerHTML += `
         <div class="piece" id="piece-${pieces[i].name}">
             <div class="pieceImage"><img src="${pieces[i].src}" alt="${pieces[i].name}"></div>
-            <div class="pieceName" ${i==selected?'style="text-decoration: underline solid var(--accent) 2px;"':''}>${pieces[i].name}</div>
+            <div class="pieceName" ${i==selected?'style="text-decoration: underline solid var(--accent) 2px;"':''}>${pieces[i].name}:</div>
             <div class="pieceCost">cost: ${pieces[i].cost}</div>
+            <div class="pieceDiscription">${pieces[i].discription}</div>
         </div>`
     }
     for(let i = 0 ; i < pieces.length ; i++){

@@ -15,7 +15,7 @@ body{
     height: 100vh;
     margin: 0px;
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 120px 1fr;
     user-select: none;
     overflow: hidden;
 }
@@ -46,12 +46,13 @@ header .h2{
 form{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-top: 10px;
 }
 .column{
     background-color: var(--surfaces);
     margin: 0px auto;
     width: calc(100% - 20px);
-    height: calc(100% - 10px);
+    height: calc(100% - 20px);
     border: var(--accent) solid 2px;
     border-radius: 8px;
     -webkit-border-radius: 8px;
