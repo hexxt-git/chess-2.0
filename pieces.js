@@ -165,48 +165,48 @@ const pieces = [
         cost: 1,
         src: './pieces/pawn.png',
         constructor: Pawn,
-        discription: 'cheapest chess piece, can move one diagonal step'
+        discription: 'cheapest chess piece, can only move one diagonal step.'
     },
     {
         name: 'king',
         cost: 2,
         src: './pieces/king.png',
         constructor: King,
-        discription: 'you need at least one alive when the win condition is set to King, can move one step in any direction'
+        discription: 'you need at least one alive when the win condition is set to King, can move one step in any direction.'
     },
     {
         name: 'rook',
         cost: 3,
         src: './pieces/rook.png',
         constructor: Rook,
-        discription: 'default chess Rook, can only move horizontaly and vertically'
+        discription: 'classic chess Rook, can only move horizontaly and vertically.'
     },
     {
         name: 'bishop',
         cost: 5,
         src: './pieces/bishop.png',
         constructor: Bishop,
-        discription: 'default chess Bishop, can only move diagonally'
+        discription: 'classic chess Bishop, can only move diagonally.'
     },
     {
         name: 'knight',
         cost: 7,
         src: './pieces/knight.png',
         constructor: Knight,
-        discription: 'default chess Knight, moves two steps in one direction and one in the other, can also jump over pieces.'
+        discription: 'classic chess Knight, moves two steps in one direction and one in the other, can also jump over pieces.'
     },
     {
         name: 'queen',
         cost: 10,
         src: './pieces/queen.png',
         constructor: Queen,
-        discription: 'default chess Queen, can move in any direction'
+        discription: 'classic chess Queen, can move in any direction.'
     },
     {
         name: 'Ninja',
         cost: 15,
         src: './pieces/Ninja.png',
         constructor: Ninja,
-        discription: 'can teleport anywhere but cannot kill any pieces making it the ultimate defence'
+        discription: 'can teleport anywhere but cannot kill any pieces making it the ultimate defence.'
     },
 ]
