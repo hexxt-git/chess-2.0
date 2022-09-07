@@ -12,6 +12,3 @@ continueGame.addEventListener('click', ()=>{
         window.location = './game.html'
     }
 })
-
-write(eval(localStorage.getItem('settings')))
-write(eval(localStorage.getItem('players')))

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+*{
+    --background: #181818;
+    --surfaces: #111;
+    --accent: darkcyan;
+    --darker: #080808;
+    --dark: #0b0b0b;
+    --text: #EEE;
+    --grey: #282828;
+}
+body{
+    background-color: var(--surfaces);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    font-family: Roboto;
+    overflow: hidden;
+}
+#winner{
+    color: var(--text);
+    font-size: 60px;
+    letter-spacing: 3px;
+    user-select: none;
+    margin-bottom: 50px;
+    text-decoration: underline solid 3px var(--accent);
+    text-underline-offset: 3px;
+    animation-name: spacing;
+    animation-duration: 1000ms;
+    height: 72px;
+}
+@keyframes spacing {
+    0%{
+        letter-spacing: 3px;
+    }
+    60%{
+        letter-spacing: 10px;
+    }
+    100%{
+        letter-spacing: 3px;
+    }
+}
+#home, #replay{
+    width: 500px;
+    height: 100px;
+    background-color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    font-size: 45px;
+    letter-spacing: 3px;
+    border: solid var(--accent) 3px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+}
+#home:hover, #replay:hover{
+    background-color: var(--darker);
+}
+#container{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+#conf{
+    width: 40px;
+    height: 40px;
+    background-color: var(--dark);
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border: solid var(--accent) 3px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+}
+#conf:hover{
+    background-color: var(--darker);
+}

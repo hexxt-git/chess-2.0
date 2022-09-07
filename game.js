@@ -218,6 +218,7 @@ function updatePieces(){
     localStorage.setItem('continue', save)
 }
 function test4win(){
+
     for (let i=1 ; i<=4 ; i++){
         let pieces = 0
         for ( let j in board ) pieces += board[j].team == i ? 1 : 0
@@ -226,6 +227,7 @@ function test4win(){
             write(players['name'+i]+' was eliminated')
         }
     }
+    
     if( settings.win_condition == 0){
         for (let i=1 ; i<=4 ; i++){
             let kings = 0
@@ -236,8 +238,33 @@ function test4win(){
             }
         }
     }
-    copy = board.filter( i => players['enable'+i.team])
+
+    for (let i=0 ; i < 4 ; i++){
+        if(timers[i] <= 2){
+            players['enable'+(i+1)] = false
+            write(players['name'+(i+1)]+' was eliminated')
+        }
+    }
+    
+    let copy = board.filter( i => players['enable'+i.team])
     board = copy
+
+    if(settings.max_turns-turnsPLayed <= 0){
+        localStorage.setItem('draw', 'true')
+        window.location = './win.html'
+    }
+
+    let enabled = []
+    for (let i=1 ; i<=4 ; i++){
+        if(players['enable'+i]){
+            enabled.push(i)
+        }
+    }
+    if(enabled.length <= 1){
+        localStorage.setItem('draw', 'false')
+        localStorage.setItem('winner', players['name'+enabled[0]])
+        window.location = './win.html'
+    }
 }
 function fix(){
     setTimeout(()=>{
