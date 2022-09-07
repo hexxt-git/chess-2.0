@@ -91,6 +91,11 @@ function update(){
             update()
         })
     }
+
+    $('l1-0').innerHTML += '<div style="position: relative; top: -10px; left: -10px;">outside</div>'
+    $('l2-0').innerHTML += '<div style="position: relative; top: -10px; left: -10px;">inside</div>'
+
+
     localStorage.setItem('team'+setting, JSON.stringify(board))
     $('balance').innerHTML = balance
     $('maxBalance').innerHTML = maxBalance
