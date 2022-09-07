@@ -73,9 +73,11 @@ function update(){
         $('l1-'+i).addEventListener('click', ()=>{
             if(board[0][i] == selected){
                 board[0].splice(i,1,null)
+                new Audio('./sfx/move'+rdm(2)+'.mp3').play()
             }else{
                 if ( balance + pieces[selected].cost <= maxBalance ){
                     board[0].splice(i,1,selected)
+                    new Audio('./sfx/move'+rdm(2)+'.mp3').play()
                 }
             }
             update()
@@ -83,9 +85,11 @@ function update(){
         $('l2-'+i).addEventListener('click', ()=>{
             if(board[1][i] == selected){
                 board[1].splice(i,1,null)
+                new Audio('./sfx/move'+rdm(2)+'.mp3').play()
             }else{
                 if ( balance + pieces[selected].cost <= maxBalance ){
                     board[1].splice(i,1,selected)
+                    new Audio('./sfx/move'+rdm(2)+'.mp3').play()
                 }
             }
             update()

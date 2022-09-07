@@ -185,6 +185,8 @@ function updatePieces(){
                     if( turn==4 ) turn = 0
                 }
 
+                new Audio('./sfx/move'+rdm(2)+'.mp3').play()
+
                 board[selected].x = move.x
                 board[selected].y = move.y
                 updatePieces()

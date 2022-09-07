@@ -1,3 +1,4 @@
+new Audio('./sfx/tada.mp3').play()
 localStorage.setItem('continue', 'false')
 
 if(localStorage.getItem('draw') == 'false'){
