@@ -1,14 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
-*{
-    --background: #181818;
-    --surfaces: #111;
-    --accent: darkcyan;
-    --darker: #080808;
-    --dark: #0b0b0b;
-    --text: #EEE;
-    --grey: #333;
-}
 body{
     background-color: var(--surfaces);
     color: var(--text);

@@ -1,0 +1,71 @@
+body{
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Roboto;
+    height: 100vh;
+    margin: 0px;
+    display: grid;
+    grid-template-rows: 120px 1fr;
+    user-select: none;
+    overflow: hidden;
+}
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+header .h1, header .h2{
+    margin: 0px;
+}
+header .h1{
+    font-size: 60px;
+    text-decoration: underline solid var(--accent) 4px;
+    text-underline-offset: 5px;
+    text-align: center;
+    letter-spacing: 7px;
+}
+header .h2{
+    font-size: 35px;
+    text-decoration: underline solid var(--accent) 3px;
+    letter-spacing: 2px;
+}
+.h1:any-link, .h2:any-link{
+    color: var(--text);
+}
+main{
+    padding: 10px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: calc(100vh - 140px);
+}
+.collumn{
+    background-color: var(--surfaces);
+    border: solid var(--accent) 3px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    overflow-y: auto;
+    user-select: text;
+}
+.collumn:hover{
+    background-color: var(--dark);
+}
+.title{
+    text-align: center;
+    font-size: 50px;
+    text-decoration: underline solid var(--accent) 3px;
+    font-variant: small-caps;
+}
+.collumn p{
+    margin: 0px;
+    padding: 0px 8px;
+    font-size: 25px;
+}
+.collumn ul{
+    margin: 0px;
+    font-size: 23px;
+}

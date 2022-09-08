@@ -1,14 +1,20 @@
 continueGame = $('continue')
 play = $('play')
-faq = $('faq')
+info = $('info')
 settings = $('settings')
-credits = $('credits')
+source = $('source')
 
 play.addEventListener('click', ()=>{
-    window.location = './game setup.html'
+    window.open('./game setup.html', '_self')
 })
 continueGame.addEventListener('click', ()=>{
     if( localStorage.getItem('continue') !='false' & localStorage.getItem('continue') != null ){
-        window.location = './game.html'
+        window.open('./game.html', '_self')
     }
+})
+info.addEventListener('click', ()=>{
+    window.open('./info.html', '_self')
+})
+source.addEventListener('click', ()=>{
+    window.open('https://github.com/9EED')
 })
