@@ -70,7 +70,7 @@ function pieceAtIndex(board, x, y){
 function checker(c,size){
     for( let x = 0 ; x < size+4 ; x++){
         for( let y = 0 ; y < size+4 ; y++){
-            c.fillStyle = (x+y%2)%2?'#131313':'darkcyan'
+            c.fillStyle = (x+y%2)%2?'#131313':'rgb(122, 90, 52)'
             c.fillRect(x*size, y*size, size, size)
         }
     }

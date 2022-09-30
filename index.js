@@ -15,6 +15,9 @@ continueGame.addEventListener('click', ()=>{
 info.addEventListener('click', ()=>{
     window.open('./info.html', '_self')
 })
+settings.addEventListener('click', ()=>{
+    window.open('./settings.html', '_self')
+})
 source.addEventListener('click', ()=>{
     window.open('https://github.com/9EED')
 })
