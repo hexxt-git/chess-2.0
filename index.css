@@ -24,11 +24,27 @@ header .h1{
     text-underline-offset: 5px;
     text-align: center;
     letter-spacing: 15px;
+    transition: 150ms ease;
+    -webkit-transition: 150ms ease;
+    -moz-transition: 150ms ease;
+    -ms-transition: 150ms ease;
+    -o-transition: 150ms ease;
+}
+header .h1:hover{
+    letter-spacing: 20px;
 }
 header .h2{
     font-size: 40px;
     text-decoration: underline solid var(--accent) 3px;
     letter-spacing: 10px;
+    transition: 150ms ease;
+    -webkit-transition: 150ms ease;
+    -moz-transition: 150ms ease;
+    -ms-transition: 150ms ease;
+    -o-transition: 150ms ease;
+}
+header .h2:hover{
+    letter-spacing: 15px;
 }
 .h1:any-link, .h2:any-link{
     color: var(--text);
